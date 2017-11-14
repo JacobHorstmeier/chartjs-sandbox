@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import {Doughnut} from 'react-chartjs-2';
 
 
@@ -20,7 +21,6 @@ const LiveDemo = () => {
     },
     {
       data: [23, 23, 22, 24, 24],
-      type: 'line',
       backgroundColor: [
         '#424242',
         '#353535',
@@ -37,10 +37,14 @@ const LiveDemo = () => {
     <main className="demo_wrapper">
     <header className="demo_header">
       <h1>react-chartjs-2</h1>
+      <Link to="/">Home</Link>{' | '}
+      <Link to="/async">Async</Link>{' | '}
+      Static
       <p>I need a chart!!</p>
-
     </header>
+
     <Doughnut data={data} />
+
     </main>
   )
 }

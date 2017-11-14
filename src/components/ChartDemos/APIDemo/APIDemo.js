@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
 import {Bar} from 'react-chartjs-2';
 
@@ -9,12 +10,11 @@ export default class APIDemos extends Component {
     this.state = {
       data: {
         labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-        datasets: [
-
-        ]
+        datasets: []
       }
     }
     this.handleRequest = this.handleRequest.bind(this);
+    this.handleRemoveSet = this.handleRemoveSet.bind(this);
   }
 
   handleRequest = () => {
@@ -45,9 +45,9 @@ export default class APIDemos extends Component {
   }
 
   handleRemoveSet = () => {
-    let newSets = Object.assign({}, this.state.data)
-    newSets.datasets = newSets.datasets.filter((c,i,a) => i !== a.length - 1)
-    this.setState({data: newSets})
+    let {data} = this.state;
+    data.datasets = [...data.datasets.splice(0, data.datasets.length-1)]
+    this.setState({data: data})
   }
 
   render() {
@@ -56,10 +56,14 @@ export default class APIDemos extends Component {
       <main className="demo_wrapper">
       <header className="demo_header">
         <h1>react-chartjs-2</h1>
+        <Link to="/">Home</Link>
+        {' | Async | '}
+        <Link to="/static">Static</Link>
           <p>{'Click \'Add Dataset\' to send API request...'}</p>
         <button onClick={this.handleRequest}>Add Dataset</button>
         <button onClick={this.handleRemoveSet}>Remove Dataset</button>
       </header>
+
       <Bar data={this.state.data} />
       </main>
 

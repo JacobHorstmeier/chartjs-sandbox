@@ -12,7 +12,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={StringDemos}/>
           <Route path='/async' component={APIDemo}/>
-          <Route path='/live' component={LiveDemo}/>
+          <Route path='/static' component={LiveDemo}/>
         </Switch>
       </div>
     );

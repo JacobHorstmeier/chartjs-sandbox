@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import './../demos.css';
 import {Bar, Polar, Doughnut, Bubble, Line, Pie} from 'react-chartjs-2';
 
@@ -71,13 +72,14 @@ export default class CharDemos extends Component {
         colors: []
       })
       this.refs.input.value = ''
+      return;
     }
     let {addSets} = this.state;
     this.setState({addSets: [...addSets.splice(0, addSets.length-1)]})
   }
 
   render() {
-    console.log(this.state.addSets)
+
     const data = {
       labels:this.state.characters,
       datasets: [
@@ -99,6 +101,9 @@ export default class CharDemos extends Component {
 
         <header className="demo_header">
           <h1>react-chartjs-2</h1>
+          Home{' | '}
+          <Link to="/async">Async</Link>{' | '}
+          <Link to="/static">Static</Link>
           <form className="string_input">
             <p>Enter some characters...</p>
             <input ref="input"
@@ -140,20 +145,19 @@ export default class CharDemos extends Component {
 
 
 const bubbleData = (state) => {
-  let mainSet = [];
-  state.charVals.forEach(c => {
+  let mainSet = state.charVals.map(c => {
     let obj = {};
     obj.x = Math.random() * (255-1);
     obj.y =  Math.random() * (255-1);
     obj.r = c/10;
-    mainSet.push(obj);
+    return obj;
   })
 
   return {
     labels: state.characters,
     datasets: [
       {
-        label: 'String Values',
+        label: `String Values`,
         backgroundColor: state.colors,
         borderColor: 'rgba(255,99,132,1)',
         borderWidth: 1,
