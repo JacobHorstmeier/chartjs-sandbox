@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import './demos.css';
+import './../demos.css';
 import {Bar, Polar, Doughnut, Bubble, Line, Pie} from 'react-chartjs-2';
 
 
 
-export default class Demos extends Component {
+export default class CharDemos extends Component {
   constructor() {
     super()
     this.state = {
