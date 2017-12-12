@@ -12,7 +12,8 @@ export default class APIDemos extends Component {
     this.state = {
       data: {
         labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-        datasets: []
+        datasets: [],
+        reqStatus: null
       }
     }
     this.handleRequest = this.handleRequest.bind(this);
@@ -30,6 +31,7 @@ export default class APIDemos extends Component {
       hoverBorderColor: 'rgba(255,99,132,1)',
       data: []
     }
+    this.setState({reqStatus: 'Request pending..'})
     axios.get('https://qrng.anu.edu.au/API/jsonI.php?length=10&type=uint8')
       .then(nums => {
         axios.get('https://qrng.anu.edu.au/API/jsonI.php?length=10&type=hex16&size=3')
@@ -40,6 +42,7 @@ export default class APIDemos extends Component {
             newSet.backgroundColor = colorSet;
             currentData.datasets.push(newSet)
             this.setState({
+              reqStatus: 'Request fulfilled.',
               data: currentData
             })
           })
@@ -49,7 +52,10 @@ export default class APIDemos extends Component {
   handleRemoveSet = () => {
     let {data} = this.state;
     data.datasets = [...data.datasets.splice(0, data.datasets.length-1)]
-    this.setState({data: data})
+    this.setState({
+      data: data,
+      reqStatus: data.datasets.length ? this.state.reqStatus : null
+    })
   }
 
   render() {
@@ -70,6 +76,7 @@ export default class APIDemos extends Component {
 
       <h3>Async Bar:</h3>
       <Bar data={this.state.data} />
+      {this.state.reqStatus ? this.state.reqStatus : null}
 
       <VerticalDivider />
       </main>
