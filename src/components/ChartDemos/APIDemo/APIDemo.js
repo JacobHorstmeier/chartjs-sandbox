@@ -31,7 +31,7 @@ export default class APIDemos extends Component {
       hoverBorderColor: 'rgba(255,99,132,1)',
       data: []
     }
-    this.setState({reqStatus: 'Request pending..'})
+    this.setState({reqStatus: 'Request pending...'})
     axios.get('https://qrng.anu.edu.au/API/jsonI.php?length=10&type=uint8')
       .then(nums => {
         axios.get('https://qrng.anu.edu.au/API/jsonI.php?length=10&type=hex16&size=3')
