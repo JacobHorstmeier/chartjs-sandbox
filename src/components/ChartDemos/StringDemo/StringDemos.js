@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import './../demos.css';
+import VerticalDivider from './../VerticalDivider';
+
 import {Bar, Polar, Doughnut, Bubble, Line, Pie} from 'react-chartjs-2';
 
 
@@ -114,28 +116,44 @@ export default class CharDemos extends Component {
           <button onClick={this.handleRemoveSet}>Remove Dataset</button>
         </header>
 
+        <VerticalDivider />
+
         <h3>Bar:</h3>
         <Bar data={data} />
+
+        <VerticalDivider />
 
         <h3>Polar:</h3>
         <Polar data={data} />
 
+        <VerticalDivider />
+
         <h3>Doughnut:</h3>
         <Doughnut data={data} />
+
+        <VerticalDivider />
 
         <h3>Bubble:</h3>
         <Bubble data={bubbleData(this.state)} />
 
+        <VerticalDivider />
+
         <h3>Line:</h3>
         <Line data={data} />
 
+        <VerticalDivider />
+
         <h3>Pie:</h3>
         <Pie data={data} />
+
+        <VerticalDivider />
 
       </main>
     )
   }
 }
+
+
 
 
 

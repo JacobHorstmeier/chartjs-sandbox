@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import VerticalDivider from './../VerticalDivider';
+
 import {Bar} from 'react-chartjs-2';
 
 
@@ -64,7 +66,12 @@ export default class APIDemos extends Component {
         <button onClick={this.handleRemoveSet}>Remove Dataset</button>
       </header>
 
+      <VerticalDivider />
+
+      <h3>Async Bar:</h3>
       <Bar data={this.state.data} />
+
+      <VerticalDivider />
       </main>
 
     )

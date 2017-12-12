@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import VerticalDivider from './../VerticalDivider';
 import {Doughnut} from 'react-chartjs-2';
 
 
@@ -43,7 +44,12 @@ const LiveDemo = () => {
       <p>I need a chart!!</p>
     </header>
 
+    <VerticalDivider />
+
+    <h3>Look what we can do!:</h3>
     <Doughnut data={data} />
+
+    <VerticalDivider />
 
     </main>
   )
