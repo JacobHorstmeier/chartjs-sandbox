@@ -36,6 +36,27 @@ const LiveDemo = () => {
 
   return (
     <main className="demo_wrapper">
+      {NavLive()}
+
+      <VerticalDivider />
+
+      <h3>Look what we can do!:</h3>
+      <Doughnut data={data} />
+
+      <VerticalDivider />
+
+    </main>
+  )
+}
+
+export default LiveDemo;
+
+
+
+
+
+const NavLive = () => {
+  return (
     <header className="demo_header">
       <h1>react-chartjs-2</h1>
       <Link to="/">Home</Link>{' | '}
@@ -43,16 +64,5 @@ const LiveDemo = () => {
       Static
       <p>I need a chart!!</p>
     </header>
-
-    <VerticalDivider />
-
-    <h3>Look what we can do!:</h3>
-    <Doughnut data={data} />
-
-    <VerticalDivider />
-
-    </main>
   )
 }
-
-export default LiveDemo;

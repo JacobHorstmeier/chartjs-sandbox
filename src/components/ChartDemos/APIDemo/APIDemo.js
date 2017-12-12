@@ -21,6 +21,13 @@ export default class APIDemos extends Component {
   }
 
   handleRequest = () => {
+    this.setState(
+      {reqStatus: 'Request pending...'},
+      () => this.getDataSet()
+    )
+  }
+
+  getDataSet = () => {
     let currentData = Object.assign({}, this.state.data);
     let newSet = {
       label: `Rand Nums ${this.state.data.datasets.length + 1}`,
@@ -31,7 +38,6 @@ export default class APIDemos extends Component {
       hoverBorderColor: 'rgba(255,99,132,1)',
       data: []
     }
-    this.setState({reqStatus: 'Request pending...'})
     axios.get('https://qrng.anu.edu.au/API/jsonI.php?length=10&type=uint8')
       .then(nums => {
         axios.get('https://qrng.anu.edu.au/API/jsonI.php?length=10&type=hex16&size=3')
@@ -60,25 +66,31 @@ export default class APIDemos extends Component {
 
   render() {
 
+    const NavAsync = () => {
+      return (
+        <header className="demo_header">
+          <h1>react-chartjs-2</h1>
+          <Link to="/">Home</Link>
+          {' | Async | '}
+          <Link to="/static">Static</Link>
+            <p>{'Click \'Add Dataset\' to send API request...'}</p>
+          <button onClick={this.handleRequest}>Add Dataset</button>
+          <button onClick={this.handleRemoveSet}>Remove Dataset</button>
+        </header>
+      )
+    }
+
     return (
       <main className="demo_wrapper">
-      <header className="demo_header">
-        <h1>react-chartjs-2</h1>
-        <Link to="/">Home</Link>
-        {' | Async | '}
-        <Link to="/static">Static</Link>
-          <p>{'Click \'Add Dataset\' to send API request...'}</p>
-        <button onClick={this.handleRequest}>Add Dataset</button>
-        <button onClick={this.handleRemoveSet}>Remove Dataset</button>
-      </header>
+        {NavAsync()}
 
-      <VerticalDivider />
+        <VerticalDivider />
 
-      <h3>Async Bar:</h3>
-      <Bar data={this.state.data} />
-      {this.state.reqStatus ? this.state.reqStatus : null}
+        <h3>Async Bar:</h3>
+        <Bar data={this.state.data} />
+        {this.state.reqStatus ? this.state.reqStatus : null}
 
-      <VerticalDivider />
+        <VerticalDivider />
       </main>
 
     )

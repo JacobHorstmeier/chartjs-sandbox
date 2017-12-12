@@ -98,9 +98,8 @@ export default class CharDemos extends Component {
       ]
     }
 
-    return (
-      <main className="demo_wrapper">
-
+    const NavString = () => {
+      return (
         <header className="demo_header">
           <h1>react-chartjs-2</h1>
           Home{' | '}
@@ -115,6 +114,13 @@ export default class CharDemos extends Component {
           <button onClick={this.handleAddSet}>Add Dataset</button>
           <button onClick={this.handleRemoveSet}>Remove Dataset</button>
         </header>
+      )
+    }
+
+    return (
+      <main className="demo_wrapper">
+        {NavString()}
+
 
         <VerticalDivider />
 
