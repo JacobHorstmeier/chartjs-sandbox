@@ -1,38 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import VerticalDivider from './../VerticalDivider';
-import {Doughnut} from 'react-chartjs-2';
+
 
 
 
 const LiveDemo = () => {
-  const data = {
-    labels: ['Nick', 'Ana', 'Beth', 'Eunbin', 'Fernando'],
-    datasets: [
-      {
-        data: [23, 23, 22, 24, 24],
-        backgroundColor: [
-          '#424242',
-          '#353535',
-          '#000',
-          'tomato',
-          'dodgerblue'
-        ],
-        hoverBackgroundColor: '#FEFEFE'
-    },
-    {
-      data: [23, 23, 22, 24, 24],
-      backgroundColor: [
-        '#424242',
-        '#353535',
-        '#000',
-        'tomato',
-        'dodgerblue'
-      ],
-      hoverBackgroundColor: '#FEFEFE'
-  }
-    ]
-  }
+  const data = {};
 
   return (
     <main className="demo_wrapper">
@@ -41,7 +15,7 @@ const LiveDemo = () => {
       <VerticalDivider />
 
       <h3>Look what we can do!:</h3>
-      <Doughnut data={data} />
+      {/*Chart Here*/}
 
       <VerticalDivider />
 
