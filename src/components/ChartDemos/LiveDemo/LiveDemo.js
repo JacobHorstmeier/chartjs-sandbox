@@ -2,10 +2,12 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import VerticalDivider from './../VerticalDivider';
 
+//import a chart to use from `react-chartjs-2`
 
 
 
 const LiveDemo = () => {
+  //data needs `labels` and `datasets` properties
   const data = {};
 
   return (
@@ -15,7 +17,7 @@ const LiveDemo = () => {
       <VerticalDivider />
 
       <h3>Look what we can do!:</h3>
-      {/*Chart Here*/}
+      {/*render a chart element here, and pass `data` into a prop called `data`*/}
 
       <VerticalDivider />
 
@@ -24,6 +26,15 @@ const LiveDemo = () => {
 }
 
 export default LiveDemo;
+
+
+
+
+
+
+
+
+
 
 
 

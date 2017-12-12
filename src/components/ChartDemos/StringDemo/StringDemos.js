@@ -83,13 +83,13 @@ export default class CharDemos extends Component {
   render() {
 
     const data = {
-      labels:this.state.characters,
+      labels: this.state.characters,
       datasets: [
         {
           label: 'String Values 1',
           backgroundColor: this.state.colors,
           borderColor: 'rgba(255,99,132,1)',
-          borderWidth: 1,
+          borderWidth: 3,
           hoverBackgroundColor: 'rgba(255,99,132,0.4)',
           hoverBorderColor: 'rgba(255,99,132,1)',
           data: this.state.charVals
